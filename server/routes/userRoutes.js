@@ -4,8 +4,8 @@ const User = require('../db/collections/user');
 
 router.get('/', (req, res) => {
   User.find({})
-    .populate('driver')
-    .populate('passenger')
+    // .populate('driver')
+    // .populate('passenger')
     .then(user => {
       if (!user) {
         return;
