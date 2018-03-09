@@ -58,4 +58,14 @@ router.patch('/:id', (req, res) => {
     });
 });
 
+router.delete('/:id', (req, res) => {
+  let id = req.params.id;
+
+  User.findByIdAndRemove({ _id: id }, (req, res) => {
+    res.status(200).send(`Successfully deleted ${id}`);
+  }).catch(err => {
+    res.status(400).send(err);
+  });
+});
+
 module.exports = router;

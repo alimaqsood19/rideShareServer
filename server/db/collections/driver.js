@@ -3,6 +3,10 @@ const { Schema } = mongoose;
 const CarInfoSchema = require('./carInfo');
 
 const DriverSchema = new Schema({
+  driverInfo: {
+    type: Schema.Types.ObjectId,
+    ref: 'user'
+  },
   destination: {
     lng: String,
     lat: String,
