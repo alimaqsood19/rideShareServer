@@ -21,7 +21,8 @@ const UserSchema = new Schema({
   },
   company: {
     type: String
-  }
+  },
+  email: String
 });
 
 const User = mongoose.model('user', UserSchema);
