@@ -20,8 +20,8 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   let id = req.params.id;
   User.find({ _id: id })
-    .populate('driver')
-    .populate('passenger')
+    // .populate('driver')
+    // .populate('passenger')
     .then(user => {
       res.status(200).send(user);
     })
