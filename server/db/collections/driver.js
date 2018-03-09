@@ -11,6 +11,12 @@ const DriverSchema = new Schema({
   time: Date,
   date: Date,
   capacity: Number,
+  occupants: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'user'
+    }
+  ],
   carModel: [CarInfoSchema]
 });
 
