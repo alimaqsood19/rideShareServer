@@ -31,6 +31,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   let driver = new Driver({
     driverInfo: req.body.driverInfo,
+    destinationAddress: String,
     destination: {
       type: 'Point',
       coordinates: [req.body.geoCode.lng, req.body.geoCode.lat]
@@ -39,7 +40,7 @@ router.post('/', (req, res) => {
     date: req.body.date,
     capacity: req.body.capacity,
     occupants: req.body.occupants,
-    carModel: req.body.carModel
+    carInfo: req.body.carInfo
   });
 
   driver
@@ -74,7 +75,7 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-router.post('/destination', (req, res) => {
+router.post('/filter', (req, res) => {
   Driver.find({
     destination: {
       $near: {
@@ -82,7 +83,7 @@ router.post('/destination', (req, res) => {
           type: 'Point',
           coordinates: [req.body.geoCode.lng, req.body.geoCode.lat]
         },
-        $minDistance: req.body.minDistance,
+        $minDistance: 0,
         $maxDistance: req.body.maxDistance
       }
     }

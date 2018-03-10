@@ -18,7 +18,7 @@ const DriverSchema = new Schema({
       ref: 'user'
     }
   ],
-  carModel: CarInfoSchema
+  carInfo: CarInfoSchema
 });
 
 const Driver = mongoose.model('driver', DriverSchema);

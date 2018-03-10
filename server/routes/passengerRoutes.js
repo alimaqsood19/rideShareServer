@@ -4,8 +4,6 @@ const Passenger = require('../db/collections/passenger');
 const Driver = require('../db/collections/driver');
 const User = require('../db/collections/user');
 
-
-
 router.get('/', (req, res) => {
   Passenger.find({})
     .then(passenger => {
@@ -22,8 +20,6 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   let id = req.params.id;
   User.find({ _id: id })
-    // .populate('driver')
-    // .populate('passenger')
     .then(user => {
       res.status(200).send(user);
     })
@@ -43,34 +39,6 @@ router.post('/', (req, res) => {
     .catch(err => {
       res.status(400).send(err);
     });
-});
-router.post('/filter', (req, res) => {
-  let user = User.find({_id: req.body.id});
-  let location = [user.userAddress.lng, user.userAddress.lat]
-  
-  let destination = [req.body.userAddress.lng, req.body.userAddress.lat];
-
-  let userLocation = Driver.find({
-    location: {
-      $near: {
-        $geometry: { type: 'Point', coordinates: location },
-        $minDistance: 1000,
-        $maxDistance: 1000
-      }
-    }
-  })
-
-
-  let destLocation = Driver.find({
-    location: {
-      $near: {
-        $geometry: { type: 'Point', coordinates: `${destination[0]},${destination[1]}`  },
-        $minDistance: 1000,
-        $maxDistance: 5000
-      }
-    }
-  })
-
 });
 
 router.patch('/:id', (req, res) => {
