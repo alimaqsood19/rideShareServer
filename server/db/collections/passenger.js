@@ -3,8 +3,8 @@ const { Schema } = mongoose;
 
 const PassengerSchema = new Schema({
   destination: {
-    lng: String,
-    lat: String,
+    lng: Number,
+    lat: Number,
     address: String
   },
   time: Date,

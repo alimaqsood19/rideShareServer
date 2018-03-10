@@ -1,11 +1,12 @@
 const { mongoose } = require('./db/db');
 const express = require('express');
 const bodyParser = require('body-parser');
-const passengerRoute = require('./routes/passengerRoutes')
+const passengerRoute = require('./routes/passengerRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const userRoute = require('./routes/userRoutes');
+const driverRoute = require('./routes/driverRoutes');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,8 +29,8 @@ app.use(function(req, res, next) {
 });
 
 app.use('/user', userRoute);
+app.use('/driver', driverRoute);
 app.use('/passenger', passengerRoute);
-
 
 app.get('/', (req, res) => {
   res.send('Hello World');
