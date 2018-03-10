@@ -64,6 +64,18 @@ router.patch('/:id', (req, res) => {
     });
 });
 
+router.patch('/occupants/:id', (req, res) => {
+  let id = req.params.id;
+  Driver.findByIdAndUpdate(
+    { _id: id },
+    { $push: { occupants: req.body.occupants } }
+  )
+    .then(driver => {
+      res.status(200).send('successful');
+    })
+    .catch(err => [res.status(400).send(err)]);
+});
+
 router.delete('/:id', (req, res) => {
   let id = req.params.id;
   Driver.findByIdAndRemove({ _id: id })
