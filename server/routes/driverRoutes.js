@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   let driver = new Driver({
     driverInfo: req.body.driverInfo,
-    destinationAddress: String,
+    destinationAddress: req.body.destinationAddress,
     destination: {
       type: 'Point',
       coordinates: [req.body.geoCode.lng, req.body.geoCode.lat]
