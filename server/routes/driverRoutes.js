@@ -84,7 +84,7 @@ router.post('/filter', (req, res) => {
           coordinates: [req.body.geoCode.lng, req.body.geoCode.lat]
         },
         $minDistance: 0,
-        $maxDistance: req.body.maxDistance
+        $maxDistance: parseInt(req.body.maxDistance)
       }
     }
   })
@@ -92,7 +92,7 @@ router.post('/filter', (req, res) => {
       return res.status(200).send(destinations);
     })
     .catch(err => {
-      return res.status(400).send(err);
+      return res.status(5).send(err);
     });
 });
 

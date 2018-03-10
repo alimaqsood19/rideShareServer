@@ -21,6 +21,8 @@ const DriverSchema = new Schema({
   carInfo: CarInfoSchema
 });
 
+DriverSchema.index({ destination: '2dsphere' });
+
 const Driver = mongoose.model('driver', DriverSchema);
 
 module.exports = Driver;
