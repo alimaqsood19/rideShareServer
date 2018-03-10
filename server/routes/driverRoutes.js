@@ -92,7 +92,7 @@ router.post('/filter', (req, res) => {
       return res.status(200).send(destinations);
     })
     .catch(err => {
-      return res.status(5).send(err);
+      return res.status(400).send(err);
     });
 });
 
