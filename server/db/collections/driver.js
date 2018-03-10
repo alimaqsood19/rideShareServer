@@ -8,6 +8,7 @@ const DriverSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'user'
   },
+  destinationAddress: String,
   destination: mongoose.Schema.Types.Point,
   time: String,
   date: String,
