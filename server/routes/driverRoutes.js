@@ -87,9 +87,13 @@ router.post('/filter', (req, res) => {
         $maxDistance: req.body.maxDistance
       }
     }
-  }).then(destinations => {
-    res.status(200).send(destinations);
-  });
+  })
+    .then(destinations => {
+      return res.status(200).send(destinations);
+    })
+    .catch(err => {
+      return res.status(400).send(err);
+    });
 });
 
 module.exports = router;
