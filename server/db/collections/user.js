@@ -7,8 +7,8 @@ const UserSchema = new Schema({
     required: true
   },
   userAddress: {
-    lng: String,
-    lat: String,
+    lng: Number,
+    lat: Number,
     address: String
   },
   driver: {

@@ -19,7 +19,8 @@
     "lodash": "^4.17.5",
     "moment": "^2.21.0",
     "mongodb": "^3.0.4",
-    "mongoose": "^5.0.9"
+    "mongoose": "^5.0.9",
+    "mongoose-geojson-schema": "^2.1.2"
   },
   "devDependencies": {
     "nodemon": "^1.17.1"

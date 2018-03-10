@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+var GeoJSON = require('mongoose-geojson-schema');
 const { Schema } = mongoose;
 const CarInfoSchema = require('./carInfo');
 
@@ -7,13 +8,9 @@ const DriverSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'user'
   },
-  destination: {
-    lng: String,
-    lat: String,
-    address: String
-  },
-  time: Date,
-  date: Date,
+  destination: mongoose.Schema.Types.Point,
+  time: String,
+  date: String,
   capacity: Number,
   occupants: [
     {
@@ -21,7 +18,7 @@ const DriverSchema = new Schema({
       ref: 'user'
     }
   ],
-  carModel: [CarInfoSchema]
+  carModel: CarInfoSchema
 });
 
 const Driver = mongoose.model('driver', DriverSchema);
